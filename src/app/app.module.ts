@@ -9,14 +9,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import mateial模組
 import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './components/login/login.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { NotFoundComponent } from './components/not-found/not-found.component'
 
 @NgModule({
   declarations: [
     AppComponent,
       MyComponentComponent,
       HomeComponent,
-      NavbarComponent
+      NavbarComponent,
+      LoginComponent,
+      ForgotPasswordComponent,
+      NotFoundComponent
    ],
   imports: [
     BrowserModule,

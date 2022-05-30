@@ -3,6 +3,11 @@
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpJm01GPmICRydIkQR671eUPLQvsf38VRclA&usqp=CAU');
   background-size: cover;
+}
+
+.example-card {
+  max-width: 400px;
+  margin-bottom: 8px;
 }
