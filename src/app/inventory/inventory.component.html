@@ -1,0 +1,108 @@
+<div class="cotainer">
+  <div class="rov">
+    <div class="col">
+      <!-- 填單 -->
+      <div class="example-container">
+        <form [formGroup]="options">
+          <mat-checkbox [formControl]="hideRequiredControl">Hide required marker</mat-checkbox>
+          <div>
+            <label>Float label: </label>
+            <mat-radio-group [formControl]="floatLabelControl">
+              <mat-radio-button value="auto">Auto</mat-radio-button>
+              <mat-radio-button value="always">Always</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <mat-form-field appearance="fill"
+              [hideRequiredMarker]="hideRequiredControl.value"
+              [floatLabel]="floatLabelControl.value">
+            <input matInput placeholder="Simple placeholder" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
+            <mat-label>Both a label and a placeholder</mat-label>
+            <input matInput placeholder="Simple placeholder">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill"
+              [hideRequiredMarker]="hideRequiredControl.value"
+              [floatLabel]="floatLabelControl.value">
+            <mat-select required>
+              <mat-option>-- None --</mat-option>
+              <mat-option value="option">Option</mat-option>
+            </mat-select>
+            <mat-label><mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i></mat-label>
+          </mat-form-field>
+        </form>
+      </div>
+
+      <!-- 表單 -->
+      <div class="demo-button-container">
+        <button mat-raised-button (click)="addData()" class="demo-button">
+          Add data
+        </button>
+        <button
+            mat-raised-button
+            [disabled]="!dataSource.length"
+            (click)="removeData()"
+            class="demo-button">
+          Remove data
+        </button>
+      </div>
+
+      <table mat-table [dataSource]="DataSource" class="mat-elevation-z8 demo-table">
+        <!-- account -->
+        <ng-container matColumnDef="userId" >
+            <th mat-header-cell *matHeaderCellDef>userId</th>
+            <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+          </ng-container>
+        <!-- name -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef >id</th>
+          <td mat-cell *matCellDef="let element" > {{element.id}} </td>
+        </ng-container>
+        <!-- role_id -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>title</th>
+          <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="Col"></tr>
+        <tr mat-row *matRowDef="let row; columns: Col;"></tr>
+    </table>
+    <mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"
+    [showFirstLastButtons]="true">
+    </mat-paginator>
+      <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element">{{element.position}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef>Weight</th>
+          <td mat-cell *matCellDef="let element">{{element.weight}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef>Symbol</th>
+          <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table> -->
+    </div>
+  </div>
+</div>
+

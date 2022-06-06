@@ -1,3 +1,4 @@
+import { InventoryComponent } from './inventory/inventory.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/login/login.component';
@@ -7,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'inventory', component: InventoryComponent },
   { path: 'login', component: LoginComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: '', redirectTo:'/login', pathMatch:'full' },

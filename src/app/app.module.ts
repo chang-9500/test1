@@ -12,26 +12,32 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { NotFoundComponent } from './components/not-found/not-found.component'
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { InventoryComponent } from './inventory/inventory.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-      MyComponentComponent,
-      HomeComponent,
-      NavbarComponent,
-      LoginComponent,
-      ForgotPasswordComponent,
-      NotFoundComponent
-   ],
+    MyComponentComponent,
+    HomeComponent,
+    NavbarComponent,
+    LoginComponent,
+    ForgotPasswordComponent,
+    NotFoundComponent,
+    InventoryComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     NgbModule,
+    MatFormFieldModule,
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

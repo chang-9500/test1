@@ -21,6 +21,14 @@ import { MatDialogModule } from '@angular/material/dialog';//dialog
 import { MatRadioModule } from '@angular/material/radio';//radio
 import { MatTabsModule } from '@angular/material/tabs';//tabs
 import { MatSelectModule } from '@angular/material/select';//select
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {HttpClientModule} from '@angular/common/http';
+
+
+
 
 // 放所有要import的material components，之後新增material只要修改這裡就好
 const MaterialCompomnents = [
@@ -45,6 +53,11 @@ const MaterialCompomnents = [
   MatRadioModule,
   MatTabsModule,
   MatSelectModule,
+  BrowserModule,
+  BrowserAnimationsModule,
+  FormsModule, ReactiveFormsModule,
+  MatNativeDateModule,
+  HttpClientModule,
 ]
 
 @NgModule({
