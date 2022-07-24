@@ -9,24 +9,24 @@ import {
 import { MatSort } from '@angular/material/sort';
 import { HttpApiService } from 'src/API/http-api.service';
 import { MatTableDataSource } from '@angular/material/table'; //表格套件
+
 // 表單
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  task_name: string;
+  remark: number;
+  task_code: string;
 }
 const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+  // {  task_name: 'A', remark: 1, task_code: '10' },
+  // {  task_name: 'B', remark: 2, task_code: '20' },
+  // {  task_name: 'C', remark: 3, task_code: '30' },
+  // {  task_name: 'D', remark: 4, task_code: '40' },
+  // {  task_name: 'E', remark: 5, task_code: '50' },
+  // {  task_name: 'F', remark: 6, task_code: '60' },
+  // {  task_name: 'G', remark: 7, task_code: '70' },
+  // {  task_name: 'H', remark: 8, task_code: '80' },
+  // {  task_name: 'I', remark: 9, task_code: '90' },
+  // {  task_name: 'J', remark: 10, task_code: '100' },
 ];
 
 @Component({
@@ -48,19 +48,22 @@ export class InventoryComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllDatas();
-    this.postData();
+    // this.postData();
+    // this.patchData();
+    // this.deleteData();
   }
 
   // 填單
   options: FormGroup;
   hideRequiredControl = new FormControl(false);
-  floatLabelControl = new FormControl('auto');
+  floatLabelControl = new FormControl('NEW');
 
   // 表單
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = [ 'task_id', 'documents_id', 'task_name','remark','create_time','task_code','last_task'];
   dataSource = [...ELEMENT_DATA];
   DataSource = new MatTableDataSource();
-  Col = ['userId', 'id', 'title']; //欄位
+  // Col = ['userId', 'id', 'title']; //欄位
+  Col = ['task_id', 'documents_id', 'task_name','remark','create_time','task_code','last_task']; //欄位
 
   addData() {
     const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
@@ -79,8 +82,8 @@ export class InventoryComponent implements OnInit {
   totalCount: any;
   getAllDatas(): void {
     this.HttpApiService.getAllAPIRequest().subscribe((Request) => {
-      console.log('All Data', Request);
-      this.userDatas = Request;
+      console.log('All Data', Request.body.task);
+      this.userDatas = Request.body.task;
       this.showData(this.DataSource, this.userDatas);
     });
   }
@@ -93,14 +96,43 @@ export class InventoryComponent implements OnInit {
   }
 
   //新增User資料
-  postData(): void {
-    let body = {
-      title: 'Test_AddData',
-      body: 'bar',
-      userId: 1,
-    };
-    this.HttpApiService.postAPIRequest(body).subscribe((Request) => {
-      console.log(Request);
-    });
-  }
+  // postData(): void {
+  //   let body = {
+  //     title: 'Test_AddData',
+  //     body: 'bar',
+  //     userId: 1,
+  //   };
+  //   this.HttpApiService.postAPIRequest(body).subscribe((Request) => {
+  //     console.log(Request);
+  //   });
+
+    // 0614NEW
+  //   documents_id: '36b85b5c-1dd2-11b2-8000-080027b246c3',
+  //   task_name:'J',
+  //   remark:'10',
+  //   task_code:'100',
+  //   last_task:'36b85b5c-1dd2-11b2-8000-080027b246c3'
+  // };
+  // this.HttpApiService.postAPIRequest(body).subscribe((Request) => {
+  //   console.log(Request);
+  // });
+  // }
+  //修改User資料
+  // patchData(): void {
+  //   let id = 1;
+  //   let body = {
+  //     title: '0607',
+  //   };
+  //   this.HttpApiService.patchAPIRequest(id, body).subscribe((Request) => {
+  //     console.log(Request);
+  //   });
+  // }
+
+  //刪除User資料
+  // deleteData(): void {
+  //   let id = 1; 
+  //   this.HttpApiService.deleteAPIRequest(id).subscribe((Request) => {
+  //     console.log(Request);
+  //   });
+  // }
 }
